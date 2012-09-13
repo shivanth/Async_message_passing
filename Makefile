@@ -1,6 +1,11 @@
-sender.o : sender.h
-	gcc sender.h -I./
-reciever.o:reciever.h
-	gcc reciever.h -I./
-router.o:router.h
-	gcc reciever.h -I./
+OBJECT_FLAGS=-c -g
+
+reciever.o : reciever.c router.o sender.o
+	gcc $(OBJECT_FLAGS) reciever.c -I./
+router.o : router.c router.h
+	gcc $(OBJECT_FLAGS) router.c -I./
+sender.o : sender.c sender.h
+	gcc $(OBJECT_FLAGS) sender.c -I ./
+
+clean:
+	rm -f *.o *.h.gch

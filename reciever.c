@@ -2,7 +2,7 @@
 
 
 
-
+/*Copies data from a buffer pointer to the internal buffer of the reciever specified*/
 int copy_to_reciever(reciever * rcvr,void * mem,int size){
   rcvr->size=size;
   rcvr->buff=(char*)malloc(size);
