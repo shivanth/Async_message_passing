@@ -2,8 +2,9 @@
 
 
 /*Initialises the router data structure*/
-int init_router(router * rtr){
+int init_router(router * rtr,int id){
   rtr->buff=NULL;
+  rtr->id=id;
   INIT_LIST_HEAD(&(rtr->rcv_list));
 }
 
@@ -24,10 +25,10 @@ transfers the data from a rtr to a reciever
 */
 int transfer_router_2_reciever(router * rtr,reciever *  rcvr){
 
-  copy_to_reciever(rcvr,rtr->buff,rtr->size);
+  copy_2_reciever(rcvr,rtr->buff,rtr->size);
 }
 /*attaches the reciever to the router so that once a message reaches the router it gets transfered to reciever when it dispatches the message*/
-int attach_reciever(router * rtr,reciever_pointer *rcvr){
+int attach_reciever(router * rtr,reciever *rcvr){
   reciever_pointer *  rcv_point;
   rcv_point=malloc(sizeof(reciever_pointer));
   rcv_point->rcvr=rcvr;
@@ -35,10 +36,10 @@ int attach_reciever(router * rtr,reciever_pointer *rcvr){
 }
 /*Transfers the data from the writer buffer  to the router buffer*/
 int transfer_writer_2_router(writer * wrtr,router *  rtr){
-  copy_to_router(rtr,wrtr->buff,wrtr->size);
+  copy_2_router(rtr,wrtr->buff,wrtr->size);
 }
 /*copies data from any pointer to the buffer of  router specified*/
-int copy_to_router(router * rtr,void * mem,size_t size){
+int copy_2_router(router * rtr,void * mem,size_t size){
   rtr->size=size;
   if(rtr->buff!=NULL)
     free(rtr->buff);

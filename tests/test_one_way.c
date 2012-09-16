@@ -14,7 +14,7 @@ void main(){
   init_router(&r,0);
   attach_reciever(&r,&r1);
   init_writer(&w1,0);
-  send_message(&w1,&r,msg,strlen(msg));
+  send_message_via_router(&w1,&r,msg,strlen(msg));
   printf("%s",r1.buff);
 
 }
