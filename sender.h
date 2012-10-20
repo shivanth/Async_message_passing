@@ -12,5 +12,6 @@ typedef struct {
   int id;
   size_t size;
   char * buff;
+  void* (*callback)(void *);
 }writer;
 #endif

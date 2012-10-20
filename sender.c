@@ -3,10 +3,10 @@
 
 
 
-int init_writer(writer * wrtr,int id){
+int init_writer(writer * wrtr,int id,void * (*callback)(void *)){
   wrtr->id=id;
-
   wrtr->buff=malloc(1000);//allocates 1 KB of memory 
+  wrtr->callback=callback;
   //init lock and exchange list;
 
 }
@@ -28,6 +28,8 @@ int copy_2_writer(writer * wrtr,void * mem,int size){
 }
 
 int send_message_2_reciever(writer *  wrtr,reciever * rcvr,void * data,int size){
+  
   copy_2_writer(wrtr,data,size);
   copy_2_reciever(rcvr,wrtr->buff,size);
+  rcvr->callback=wrtr->callback;
 }

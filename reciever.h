@@ -3,7 +3,7 @@
 #include<unistd.h>
 #include<string.h>
 #include<stdlib.h>
-
+#include<pthread.h>
 
 
 typedef struct {
@@ -11,6 +11,7 @@ typedef struct {
   char * buff;
   //int lock;
   int size;
+  void * (*callback)(void*);
 }reciever;
 
 

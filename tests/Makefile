@@ -1,6 +1,6 @@
 SRC=test_one_way.c test_one_way_2recievers.c test_one_way_without_router.c 
 LIB=../sender.o ../reciever.o ../router.o
-OPTIONS=-I../
+OPTIONS= -pthread -I../
 HDR=$(SRC:.c=.h)
 OBJ=$(SRC:.c=.o)
 

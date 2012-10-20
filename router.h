@@ -10,7 +10,8 @@ typedef struct{
   char * buff;
   //int lock;
   struct list_head rcv_list;
-  //reciever r;
+  void* (*callback)(void*);
+
   size_t size;
 }router;
 
